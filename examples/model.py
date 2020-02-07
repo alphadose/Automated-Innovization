@@ -1,14 +1,14 @@
 import numpy as np
 import pandas as pd
 import time, math
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from itertools import combinations, product
 
 class AutomatedInnovization:
     
     def __init__(self, dataset=None, basis_functions=None, drop_duplicates=False, plot_c_values=False):
         self.data = np.log(dataset[basis_functions]).groupby(basis_functions).size().reset_index()
-        self.basis_functions = basis_functions
+        self.basis_functions = list(self.data[basis_functions].nunique().sort_values(ascending=False).index)
         self.data = self.data[[0] + self.basis_functions]
         self.data.columns = ["Frequency"] + self.basis_functions
         if drop_duplicates:
@@ -16,6 +16,7 @@ class AutomatedInnovization:
         self.frequencies = self.data["Frequency"].values
         self.cluster_threshold = 3
         self.plot_c_values = plot_c_values
+    
     
     def __prettyPrint(self, gradient, total_points, counter, constants, rule_index):
         total_clusters = sum(counter >= self.cluster_threshold)

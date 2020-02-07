@@ -8,7 +8,7 @@ class AutomatedInnovization:
     
     def __init__(self, dataset=None, basis_functions=None, drop_duplicates=False, plot_c_values=False):
         self.data = np.log(dataset[basis_functions]).groupby(basis_functions).size().reset_index()
-        self.basis_functions = basis_functions
+        self.basis_functions = list(self.data[basis_functions].nunique().sort_values(ascending=False).index)
         self.data = self.data[[0] + self.basis_functions]
         self.data.columns = ["Frequency"] + self.basis_functions
         if drop_duplicates:
