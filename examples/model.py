@@ -16,7 +16,7 @@ class AutomatedInnovization:
         self.frequencies = self.data["Frequency"].values
         self.cluster_threshold = 3
         self.plot_c_values = plot_c_values
-    
+        self.index = self.basis_functions.index(basis_functions[0])
     
     def __prettyPrint(self, gradient, total_points, counter, constants, rule_index):
         total_clusters = sum(counter >= self.cluster_threshold)
@@ -210,7 +210,7 @@ class AutomatedInnovization:
         power_list = list(product(*power_list))
 
         for powers in power_list:
-            rule = np.array(list(powers))/powers[0]
+            rule = np.array(list(powers))/powers[self.index]
             rules.append((rule, self.__getConstants(rule)))
         
         print("################################################################################################\n")
