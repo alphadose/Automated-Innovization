@@ -2,7 +2,7 @@ from model import AutomatedInnovization
 
 import pandas as pd
 
-dataset = pd.read_csv("../datasets/beam.csv")
+dataset = pd.read_csv("datasets/beam.csv")
 
 rules = [["b", "D"], ["C", "D"]]
 

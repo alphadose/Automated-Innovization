@@ -2,7 +2,7 @@ from model import AutomatedInnovization
 
 import pandas as pd
 
-dataset = pd.read_csv("../datasets/clutch.csv")
+dataset = pd.read_csv("datasets/clutch.csv")
 
 rules = [["ro", "ri"], ["T", "S"]]
 

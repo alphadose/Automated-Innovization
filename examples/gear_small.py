@@ -2,7 +2,7 @@ from model import AutomatedInnovization
 
 import pandas as pd
 
-dataset = pd.read_csv("../datasets/gear.csv")
+dataset = pd.read_csv("datasets/gear.csv")
 
 rules = [["Td", "Tb"], ["Ta", "Tf"], ["Tf/Tb", "Ta/Td"]]
 
